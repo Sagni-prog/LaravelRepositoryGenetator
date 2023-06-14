@@ -34,9 +34,6 @@ class MakeRepositoryCommand extends Command
     
        $name = $this->argument('name');
        
-       
-      //  return $this->createInterfaceFile($name,'App\\Repositories');
-       
        $pairs = explode(",",trim($this->input->getOption('methods'), "{}"));
        $des = explode('/',$name);
         if(!is_dir(app_path('Repositories'))){
