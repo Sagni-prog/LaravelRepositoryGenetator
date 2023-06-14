@@ -157,10 +157,10 @@ class MakeRepositoryCommand extends Command
       
       if($folder !== null){
          
-         $classToConcatenate = "\t".'Sagni\\Repository\\'.$folder.'\\'.$name.'ServiceProvider::class,'."\n";
+         $classToConcatenate = "\t\t".'App\\Repositories\\'.$folder.'\\'.$name.'ServiceProvider::class,'."\n";
       }
       else {
-         $classToConcatenate = "\t".'Sagni\\Repository\\'.$name.'ServiceProvider::class,'."\n";
+         $classToConcatenate = "\t\t".'App\\Repositories\\'.$name.'ServiceProvider::class,'."\n";
       }
       
      
@@ -168,8 +168,9 @@ class MakeRepositoryCommand extends Command
       preg_match($pattern, $content, $matches);
       $closingBracket = strrpos($matches[0], ']');
       $newContent = substr_replace($matches[0], $classToConcatenate, $closingBracket, 0);
-      // $content = str_replace($matches[0], $newContent, $content);
-      echo $newContent;
+      $content = str_replace($matches[0], $newContent, $content);
+      file_put_contents( $file,$content);
+      echo $content;
       
    } 
     
