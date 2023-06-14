@@ -1,0 +1,20 @@
+<?php
+
+namespace {{ namespace }};
+
+use Illuminate\Support\ServiceProvider;
+use {{ repository }};
+use {{ repositoryinterface }};
+
+
+class {{ class }} extends ServiceProvider{
+   
+   public function register(){
+   
+      $this->app->bind({{ repositoryInterfaceClass }}::class,{{ repositoryClass }}::class);
+   }
+   
+   public function boot(){
+   
+   }
+}
