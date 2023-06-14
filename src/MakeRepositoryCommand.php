@@ -14,6 +14,7 @@ class MakeRepositoryCommand extends Command
      */
     protected $signature = 'make:repository {name}
                                             {--methods={}}
+                                            { --s }
     ';
 
     /**
@@ -32,6 +33,8 @@ class MakeRepositoryCommand extends Command
     {
     
        $name = $this->argument('name');
+       
+       
       //  return $this->createInterfaceFile($name,'App\\Repositories');
        
        $pairs = explode(",",trim($this->input->getOption('methods'), "{}"));
@@ -124,6 +127,20 @@ class MakeRepositoryCommand extends Command
        $content = str_replace('{{ signature }}',$signature,$content);
        file_put_contents($path, $content);
     }
+    
+   private function createServiceProvider(){
+       
+      $file = base_path('config'.DIRECTORY_SEPARATOR.'app.php');
+    
+      $content = file_get_contents($file);
+      $classToConcatenate = "\t".'Sagni\Repository\RepositoryInterfaces::class,'."\n";
+      $pattern = '/(\'providers\'\s*=>\s*\[.*?\]\s*,)/s';
+      preg_match($pattern, $content, $matches);
+      $closingBracket = strrpos($matches[0], ']');
+      $newContent = substr_replace($matches[0], $classToConcatenate, $closingBracket, 0);
+      $content = str_replace($matches[0], $newContent, $content);
+      
+   } 
     
     private function saveContent($path,$content){
       
