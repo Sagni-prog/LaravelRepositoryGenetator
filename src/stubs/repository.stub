@@ -1,0 +1,13 @@
+<?php
+
+namespace {{ namespace }};
+use {{ repositoryinterface }};
+
+class {{ class }} implements {{ interface }}{
+ 
+ public function __construct(){
+     
+   }
+   
+   {{ methods }}
+}
