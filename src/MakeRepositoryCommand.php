@@ -40,69 +40,19 @@ class MakeRepositoryCommand extends Command
        $pairs = explode(",",trim($this->input->getOption('methods'), "{}"));
        $des = explode('/',$name);
         if(!is_dir(app_path('Repositories'))){
-              
-         mkdir(app_path('Repositories'));
-
+          mkdir(app_path('Repositories'));
       }
-       $this->createRepositoryFile($name);
-       
-      //  $stub = file_get_contents(__DIR__.'/stubs/repository.stub');
-       
-      //  if(!is_dir(app_path('Repositories'))){
-              
-      //    mkdir(app_path('Repositories'));
-
-      // }
       
-      //  if(array_key_exists(1, $des)){
-       
-      //   if(!is_dir(app_path('Repositories'.DIRECTORY_SEPARATOR.$des[0]))){
-        
-      //      mkdir(app_path('Repositories'.DIRECTORY_SEPARATOR.$des[0]));
-      //   }
-        
-      //   $content = str_replace('{{ class }}',$des[1],$stub);
-      //   $content = str_replace('{{ interface }}',$des[1].'Interface',$content);
-      //   $content = str_replace('{{ namespace }}',"App\Repositories\\".$des[0],$content);
-      //   $content = str_replace('{{ repositoryinterface }}',"App\Repositories\\".$des[0]."\\".$des[1]."Interface",$content);
-        
-      //   $interfacePath = app_path('Repositories'.DIRECTORY_SEPARATOR.$des[0].DIRECTORY_SEPARATOR.$des[1].'Interface.php');
-        
-      //   if($pairs[0]){
-      //     $content = str_replace('{{ methods }}',$pairs[0],$content);
-      //     echo $this->createInterfaceFile($des[1],$interfacePath,'App\\Repositories\\'.$des[0],$pairs[0]);
-
-         
-      //  }else{
-      //     $content = str_replace('{{ methods }}','',$content);
-      //     echo $this->createInterfaceFile($des[1],$interfacePath,'App\\Repositories\\'.$des[0]);
-
-      //  }
-        
-      //   file_put_contents(app_path('Repositories'.DIRECTORY_SEPARATOR.$des[0].DIRECTORY_SEPARATOR.$des[1].'.php'),$content);
-         
-      //  }
-      //  else{
-      //       $content = str_replace('{{ class }}',$name,$stub);
-      //       $content = str_replace('{{ interface }}',$name.'Interface',$content);
-      //       $content = str_replace('{{ namespace }}',"App\Repositories",$content);
-      //       $content = str_replace('{{ repositoryinterface }}',"App\Repositories"."\\".$name."Interface",$content);
-            
-      //       $interfacePath = app_path('Repositories'.DIRECTORY_SEPARATOR.$name.'Interface.php');
-
-            
-      //       echo $this->createInterfaceFile($name,$interfacePath,'App\\Repositories');
-            
-      //       if($pairs[0]){
-      //          $content = str_replace('{{ methods }}',$pairs[0],$content);
-               
-      //       }else{
-      //          $content = str_replace('{{ methods }}','',$content);
-      //      }
-         
-      //    file_put_contents(app_path('Repositories'.DIRECTORY_SEPARATOR.$name.'.php'),$content);
-         
-      //  }
+      if(array_key_exists(1, $des)){
+         $this->createRepositoryFile($des[1],$des[0]);
+         $interfacePath = app_path('Repositories'.DIRECTORY_SEPARATOR.$des[0].DIRECTORY_SEPARATOR.$des[1].'Interface.php');
+         $this->createInterfaceFile($des[1],$interfacePath,'App\\Repositories\\'.$des[0]);
+      }else{
+         $this->createRepositoryFile($name);
+         $interfacePath = app_path('Repositories'.DIRECTORY_SEPARATOR.$name.'Interface.php');
+         $this->createInterfaceFile($name,$interfacePath,'App\\Repositories');
+      }
+      
     }
     
     private function getRepositoryStub(){
@@ -121,33 +71,31 @@ class MakeRepositoryCommand extends Command
     
     }
     
-    private function createRepositoryFile($name, $mathod = null){
+    private function createRepositoryFile($name, $folder=null, $mathod = null){
        
        $stub = $this->getRepositoryStub();
        $des = explode('/',$name);
        $content = str_replace('{{ methods }}',$mathod,$stub);
-
-       if(array_key_exists(1, $des)){
        
-            if(!is_dir(app_path('Repositories'.DIRECTORY_SEPARATOR.$des[0]))){
+       if($folder !== null){
            
-               mkdir(app_path('Repositories'.DIRECTORY_SEPARATOR.$des[0]));
-            }
-         
-          $content = str_replace('{{ class }}',$des[1], $content);
-          $content = str_replace('{{ interface }}',$des[1].'Interface',$content);
-          $content = str_replace('{{ namespace }}',"App\Repositories\\".$des[0],$content);
-          $content = str_replace('{{ repositoryinterface }}',"App\Repositories\\".$des[0]."\\".$des[1]."Interface",$content);
-          
-          file_put_contents(app_path('Repositories'.DIRECTORY_SEPARATOR.$des[0].DIRECTORY_SEPARATOR.$des[1].'.php'),$content);
-       }else{
-          $content = str_replace('{{ class }}',$name,$content);
-          $content = str_replace('{{ interface }}',$name.'Interface',$content);
-          $content = str_replace('{{ namespace }}',"App\Repositories",$content);
-          $content = str_replace('{{ repositoryinterface }}',"App\Repositories"."\\".$name."Interface",$content);
-          file_put_contents(app_path('Repositories'.DIRECTORY_SEPARATOR.$name.'.php'),$content);
-
+           if(!is_dir(app_path('Repositories'.DIRECTORY_SEPARATOR.$folder))){
+           
+            mkdir(app_path('Repositories'.DIRECTORY_SEPARATOR.$folder));
+           }
+           $content = str_replace('{{ namespace }}',"App\Repositories\\".$folder,$content);
+           $content = str_replace('{{ repositoryinterface }}',"App\Repositories\\".$folder."\\".$name."Interface",$content);
+      
        }
+       
+       $content = str_replace('{{ namespace }}',"App\Repositories",$content);
+       $content = str_replace('{{ repositoryinterface }}',"App\Repositories"."\\".$name."Interface",$content);
+       
+       $content = str_replace('{{ class }}',$name, $content);
+       $content = str_replace('{{ interface }}',$name.'Interface',$content);
+       
+       file_put_contents(app_path('Repositories'.DIRECTORY_SEPARATOR.$folder.DIRECTORY_SEPARATOR.$name.'.php'),$content);
+
        
     }
     
@@ -160,7 +108,7 @@ class MakeRepositoryCommand extends Command
        file_put_contents($path, $content);
     }
     
-   private function createServiceProvider(){
+   private function addServiceProviderToConfig(){
        
       $file = base_path('config'.DIRECTORY_SEPARATOR.'app.php');
     
