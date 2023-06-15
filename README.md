@@ -1,5 +1,6 @@
 Introduction
 ------------
+This is a lightweight Laravel package designed to streamline the process of creating repositories design pattern in your projects. With this package, you can effortlessly generate the necessary files for your repository, including the concrete class, interface, and service provider.
 
 Installation
 ------------
