@@ -14,5 +14,12 @@
             "email": "sagnialemayehu69@gmail.com"
         }
     ],
-    "require": {}
+    "require": {},
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Sagni\\Repository\\MakeRepositoryCommandService"
+            ]
+        }
+    }
 }
