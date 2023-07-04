@@ -18,7 +18,7 @@ Usage
 php artisan make:repository User/UserRepository
 ```
 
-After runnig the command the following files will be created in your project 
+After runnig the command the following files will be automatically created in your project 
 
 ```php
    <?php
