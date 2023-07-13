@@ -69,7 +69,7 @@ class UserRepositoryServiceProvider extends ServiceProvider{
    }
 }
 ```
-And the following will be automatically added in your project's config/app.js
+And the following will be automatically added in your project's config/app.php
 
 ```php
 App\Repositories\User\UserRepositoryServiceProvider::class,
