@@ -5,7 +5,9 @@
     - [Requirements](#requirements)
     - [Install the Package](#install-the-package)
 - [Usage](#usage)
+- [Contribution](#contribution)
 - [License](#license)
+- [Conclusion](#conclusion)
 
 ## OverView
 
@@ -118,7 +120,20 @@ And the following will be automatically added in your project's config/app.php
 ```php
 App\Repositories\User\UserRepositoryServiceProvider::class,
 ```
+## Contribution
+
+If you wish to make any changes or improvements to the package, feel free to make a pull request.
 
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
+
+### Conclusion
+
+The Sagni Repository package greatly simplifies the process of creating repository classes in your Laravel application. By automating the generation of repository files, interfaces, and service providers, it encourages a structured and organized approach to data access. Feel free to expand on the base implementation to tailor it to your project's specific needs.
+
+If you have any questions, feedback, or contributions, please don't hesitate to reach out to the package author:
+
+- **Author:** Sagni Alemayehu
+- **Email:** [sagnialemayehu69@gmail.com](mailto:sagnialemayehu69@gmail.com)
+
