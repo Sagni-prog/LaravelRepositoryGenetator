@@ -128,7 +128,7 @@ If you wish to make any changes or improvements to the package, feel free to mak
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
 
-### Conclusion
+## Conclusion
 
 The Sagni Repository package greatly simplifies the process of creating repository classes in your Laravel application. By automating the generation of repository files, interfaces, and service providers, it encourages a structured and organized approach to data access. Feel free to expand on the base implementation to tailor it to your project's specific needs.
 
