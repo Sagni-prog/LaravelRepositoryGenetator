@@ -53,6 +53,8 @@ php artisan make:repository UserRepository
 This command generates the same files mentioned above, but without the User subdirectory.
 
 
+
+
 ### Repository Class
 After generating the necessary files, you need to implement your repository logic. Open the UserRepository.php file created inside the app/Repository/User directory and modify it as needed:
 
