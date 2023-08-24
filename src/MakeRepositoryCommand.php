@@ -145,6 +145,10 @@ class MakeRepositoryCommand extends Command
        
        file_put_contents(app_path('Repositories'.DIRECTORY_SEPARATOR.$folder.DIRECTORY_SEPARATOR.$name.'.php'),$content);
 
+       $content = str_replace('{{ class }}',$name, $content);
+
+       $this->repositoryClassPath = app_path('Repositories'.DIRECTORY_SEPARATOR.$folder.DIRECTORY_SEPARATOR.$name.'.php');
+
        
     }
     
@@ -155,6 +159,7 @@ class MakeRepositoryCommand extends Command
        $content = str_replace('{{ namespace }}',$namespace,$content);
        $content = str_replace('{{ signature }}',$signature,$content);
        file_put_contents($path, $content);
+       $this->repositoryInterfacePath = $path;
     }
     
     private function createServiceProviderFile($name, $folder = null){
@@ -185,6 +190,8 @@ class MakeRepositoryCommand extends Command
        
        $path = app_path('Repositories'.DIRECTORY_SEPARATOR.$folder.DIRECTORY_SEPARATOR.$name.'ServiceProvider.php');
        file_put_contents($path,$content);
+       
+       $this->serviceProviderpath= $path;
       
     }
     
