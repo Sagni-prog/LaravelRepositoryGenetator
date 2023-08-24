@@ -190,7 +190,7 @@ class MakeRepositoryCommand extends Command
        
        $path = app_path('Repositories'.DIRECTORY_SEPARATOR.$folder.DIRECTORY_SEPARATOR.$name.'ServiceProvider.php');
        file_put_contents($path,$content);
-       
+
        $this->serviceProviderpath= $path;
       
     }
@@ -216,7 +216,7 @@ class MakeRepositoryCommand extends Command
       $newContent = substr_replace($matches[0], $classToConcatenate, $closingBracket, 0);
       $content = str_replace($matches[0], $newContent, $content);
       file_put_contents( $file,$content);
-      echo $content;
+      
       
    } 
     
