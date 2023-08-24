@@ -3,10 +3,14 @@
 namespace Sagni\Repository;
 
 use Illuminate\Console\Command;
+use Symfony\Component\Console\Formatter\OutputFormatterStyle;
 use Str;
 
 class MakeRepositoryCommand extends Command
 {
+   private $repositoryClassPath;
+   private $repositoryInterfacePath;
+   private $serviceProviderpath;
     /**
      * The name and signature of the console command.
      *
@@ -49,12 +53,47 @@ class MakeRepositoryCommand extends Command
          $this->createServiceProviderFile($des[1],$des[0]);
          $this->addServiceProviderToConfig($des[1],$des[0]);
 
+         $padding = str_repeat(' ', 3); 
+         $padding2 = str_repeat(' ', 0); 
+
+         $style1 = new OutputFormatterStyle('white', 'blue');
+         $style2 = new OutputFormatterStyle('white', 'green');
+         $style3 = new OutputFormatterStyle('white', 'yellow');
+
+      // Apply styles and output the lines
+         $this->output->getFormatter()->setStyle('info', $style1);
+         $this->line("{$padding}<info>INFO</info>{$padding2} Repository [$this->repositoryClassPath] created successfully.");
+
+         $this->output->getFormatter()->setStyle('info', $style2);
+         $this->line("{$padding}<info>INFO</info>{$padding2} Interface [$this->repositoryInterfacePath] created successfully.");
+
+         $this->output->getFormatter()->setStyle('info', $style3);
+         $this->line("{$padding}<info>INFO</info>{$padding2} Provider [$this->serviceProviderpath] created successfully.");
+
       }else{
          $this->createRepositoryFile($name);
          $interfacePath = app_path('Repositories'.DIRECTORY_SEPARATOR.$name.'Interface.php');
          $this->createInterfaceFile($name,$interfacePath,'App\\Repositories');
          $this->createServiceProviderFile($name);
          $this->addServiceProviderToConfig($name);
+
+         
+         $padding = str_repeat(' ', 3); 
+         $padding2 = str_repeat(' ', 0); 
+
+         $style1 = new OutputFormatterStyle('white', 'blue');
+         $style2 = new OutputFormatterStyle('white', 'green');
+         $style3 = new OutputFormatterStyle('white', 'yellow');
+
+      // Apply styles and output the lines
+         $this->output->getFormatter()->setStyle('info', $style1);
+         $this->line("{$padding}<info>INFO</info>{$padding2} Repository [$this->repositoryClassPath] created successfully.");
+
+         $this->output->getFormatter()->setStyle('info', $style2);
+         $this->line("{$padding}<info>INFO</info>{$padding2} Interface [$this->repositoryInterfacePath] created successfully.");
+
+         $this->output->getFormatter()->setStyle('info', $style3);
+         $this->line("{$padding}<info>INFO</info>{$padding2} Provider [$this->serviceProviderpath] created successfully.");
 
       }
       
