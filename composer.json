@@ -6,8 +6,7 @@
         "generator",
         "repository",
         "package",
-        "laravel",
-        "sagni"
+        "laravel"
        ],
     "license": "MIT",
     "autoload": {
