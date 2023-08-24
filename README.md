@@ -41,9 +41,9 @@ php artisan make:repository User/UserRepository
 <!-- After runnig the command the following files will be automatically created in your project  -->
 If the Repository directory does not exist within your app directory, the command will automatically create it for you. The above command will generate the following files:
 
-app/Repository/User/UserRepository.php
-app/Repository/User/UserRepositoryInterface.php
-app/Providers/User/UserRepositoryServiceProvider.php
+ - 1. app/Repository/User/UserRepository.php
+ - 2. app/Repository/User/UserRepositoryInterface.php
+ - 3. app/Providers/User/UserRepositoryServiceProvider.php
 
 
 ### Repository Class
