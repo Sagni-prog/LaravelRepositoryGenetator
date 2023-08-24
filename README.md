@@ -1,9 +1,25 @@
-Introduction
-------------
+## Table of Contents
+
+- [Overview](#overview)
+- [Installation](#installation)
+    - [Requirements](#requirements)
+    - [Install the Package](#install-the-package)
+    - [Publishing the Default Rulesets](#publishing-the-default-rulesets)
+- [Usage](#usage)
+
+##OverView
+
 This is a lightweight Laravel package designed to streamline the process of creating repositories design pattern in your projects. With this package, you can effortlessly generate the necessary files for your repository, including the concrete class, interface, and service provider.
 
-Installation
-------------
+## Installation
+
+### Requirements
+The package has been developed and tested to work with the following minimum requirements:
+
+- PHP 8.0
+- Laravel 8
+
+### Install the Package
 Run this command
 
 ```bash
@@ -12,8 +28,8 @@ composer require sagni/repository
 
 
 
-Usage
-----------------
+## Usage
+
 ```bash
 php artisan make:repository User/UserRepository
 ```

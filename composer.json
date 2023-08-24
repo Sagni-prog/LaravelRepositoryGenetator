@@ -2,6 +2,15 @@
     "name": "sagni/repository",
     "description": "This is laravel package for creating repository",
     "type": "library",
+    "keywords": [
+        "sagni",
+        "repository",
+        "package",
+        "repository-pattern",
+        "data-access",
+        "repository-generator",
+        "laravel"
+    ],
     "license": "MIT",
     "autoload": {
         "psr-4": {
@@ -14,7 +23,12 @@
             "email": "sagnialemayehu69@gmail.com"
         }
     ],
-    "require": {},
+    "require": {
+        "php": "^8.0",
+        "illuminate/console": "^8.0|^9.0|^10.0",
+        "symfony/console": "^5.0|^6.0", 
+        "illuminate/support": "^8.0|^9.0|^10.0" 
+    },  
     "extra": {
         "laravel": {
             "providers": [
