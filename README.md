@@ -4,7 +4,6 @@
 - [Installation](#installation)
     - [Requirements](#requirements)
     - [Install the Package](#install-the-package)
-    - [Publishing the Default Rulesets](#publishing-the-default-rulesets)
 - [Usage](#usage)
 
 ##OverView
