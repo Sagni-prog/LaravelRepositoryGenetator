@@ -5,6 +5,7 @@
     - [Requirements](#requirements)
     - [Install the Package](#install-the-package)
 - [Usage](#usage)
+- [License](#license)
 
 ## OverView
 
@@ -29,11 +30,24 @@ composer require sagni/repository
 
 ## Usage
 
+### Basic Usage 
+
+To create a repository using the make:repository command, simply run:
+
 ```bash
 php artisan make:repository User/UserRepository
 ```
 
-After runnig the command the following files will be automatically created in your project 
+<!-- After runnig the command the following files will be automatically created in your project  -->
+If the Repository directory does not exist within your app directory, the command will automatically create it for you. The above command will generate the following files:
+
+app/Repository/User/UserRepository.php
+app/Repository/User/UserRepositoryInterface.php
+app/Providers/User/UserRepositoryServiceProvider.php
+
+
+### Repository Class
+After generating the necessary files, you need to implement your repository logic. Open the UserRepository.php file created inside the app/Repository/User directory and modify it as needed:
 
 ```php
    <?php
@@ -51,6 +65,9 @@ class UserRepository implements UserRepositoryInterface{
 }
 ```
 
+### Repository Interface
+Edit the UserRepositoryInterface.php file inside the app/Repository/User directory to define the repository methods:
+
 ```php
 <?php
 
@@ -61,6 +78,9 @@ Interface UserRepositoryInterface{
   
 }
 ```
+### Service Provider
+
+The UserRepositoryServiceProvider.php file located in app/Providers/User binds the repository interface to its implementation. You don't need to modify this file, as it's automatically generated.
 
 ```php
 <?php
@@ -89,3 +109,7 @@ And the following will be automatically added in your project's config/app.php
 ```php
 App\Repositories\User\UserRepositoryServiceProvider::class,
 ```
+
+## License
+
+The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
