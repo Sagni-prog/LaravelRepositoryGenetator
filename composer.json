@@ -3,14 +3,12 @@
     "description": "This is laravel package for creating repository",
     "type": "library",
     "keywords": [
-        "sagni",
+        "generator",
         "repository",
         "package",
-        "repository-pattern",
-        "data-access",
-        "repository-generator",
-        "laravel"
-    ],
+        "laravel",
+        "sagni"
+       ],
     "license": "MIT",
     "autoload": {
         "psr-4": {
